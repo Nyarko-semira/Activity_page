@@ -1,0 +1,65 @@
+.label{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+.field::placeholder{
+    padding: 10px !important;
+    font-size: 18px !important;
+}
+
+.btns{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.btn2{
+    justify-content: center;
+    width: 100px;
+   
+    color: aliceblue !important;
+}
+
+.Main-container{
+    width: 100%;
+    border: 1px solid rgb(244, 239, 239);
+    min-height: 500px;
+    margin-bottom: 50px;
+}
+
+.header{
+    width: 100%;
+     padding: 5px 15px;
+    border-bottom: 1px solid rgb(244, 239, 239) ;
+}
+
+.header-btn{
+    font-size: 20px !important;
+    border: 0 !important;
+}
+
+
+.Name-tab{
+    padding: 5px 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px !important;
+    border-bottom: 1px solid rgb(244, 239, 239);
+    background: rgb(239, 235, 244);
+    font-weight: 500;
+   
+}
+
+.action{
+    margin-right: 70px;
+}
+
+.records{
+    font-size: 18px!important;
+    padding: 15px;
+    color: rgb(152, 152, 152);
+}
