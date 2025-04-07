@@ -8,30 +8,49 @@ import Button from 'react-bootstrap/Button';
 import { FaRegSave } from 'react-icons/fa';
 
 
-const Activitytab = () => {
+const Activitytab = ({req}) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
+    watch
   } = useForm()
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) =>{
+  
+      if(req.length === 0) {
+        setError("Name", "Please get your code online")
+        return
+      }
+
+    console.log(data)
+  }
+
+  const name = watch('Name')
+
+  console.log({name});
+  
+
 
   return (
     <div className='main_tab'>
       <Form onSubmit={handleSubmit(onSubmit)}>
+        {name}
         <Row className="mb-1">
           <Form.Group as={Col} md="4" controlId="validationCustom01">
-            <Form.Label className='label'>Code</Form.Label>
-            <Form.Control
+            <Form.Label className='label' >Code</Form.Label>
+            <Form.Control 
               {...register("Code", { required: true })}
               aria-invalid={errors.Code ? "true" : "false"}
+              className={errors.Code ? "is-invalid" : ""} 
               type="text"
               placeholder="Enter Code"
+            
             />
             {errors.Code?.type === "required" && (
               <p className="text-danger" role="alert">Code is required</p>
             )}
-
+          
 
           </Form.Group>
 
@@ -40,6 +59,7 @@ const Activitytab = () => {
             <Form.Control
               {...register("Name", { required: true })}
               aria-invalid={errors.Name ? "true" : "false"}
+              className={errors.Name ? "is-invalid" : ""} 
               type="text"
               placeholder="Enter Name"
 
@@ -54,6 +74,7 @@ const Activitytab = () => {
             <Form.Control
               {...register("TAT", { required: true })}
               aria-invalid={errors.TAT ? "true" : "false"}
+              className={errors.TAT ? "is-invalid" : ""} 
               type="text"
               placeholder="Enter turn arround time"
             />
@@ -65,10 +86,11 @@ const Activitytab = () => {
         <Row className="mb-1">
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label className='label'>Escalation Mailing List</Form.Label>
-            <Form.Control as="textarea" rows={3} className='field'
+            <Form.Control as="textarea" rows={3} 
               {...register("Mail", { required: true })}
               aria-invalid={errors.Mail ? "true" : "false"}
-              placeholder='Select escalation mailing list , Pleaase seperate each email with a ";"'
+              className={errors.Mail ? "is-invalid" : ""} 
+             placeholder='Select escalation mailing list , Pleaase seperate each email with a ";"'
             />
             {errors.Mail?.type === "required" && (
               <p className="text-danger" role="alert">Email is  required</p>
@@ -83,6 +105,7 @@ const Activitytab = () => {
             <Form.Select
               {...register("Process", { required: "Activity Type is required" })}
               aria-invalid={errors.Process ? "true" : "false"}
+              className={errors.Process ? "is-invalid" : ""} 
             >
               <option value="">Open this select menu</option>
               <option value="1">One</option>
